@@ -2,16 +2,29 @@
  * @Author: Mr.zeng 
  * @Date: 2020-05-13 01:59:25 
  * @Last Modified by: Mr.zeng
- * @Last Modified time: 2020-05-13 02:29:53
+ * @Last Modified time: 2020-05-14 01:10:54
  */
 
 <template>
-    <button class="u-button">按钮</button>
+    <button class="u-button">
+        <div v-if="iconPosition === 'right'">
+            <slot></slot>
+            <svg v-if="icon" class="icon">
+                <use :xlink:href="`#${icon}`"></use>
+            </svg>
+        </div>
+        <div v-else>
+            <svg v-if="icon" class="icon">
+                <use :xlink:href="`#${icon}`"></use>
+            </svg>
+            <slot></slot>
+        </div>
+    </button>
 </template>
 
 <script>
     export default {
-        
+        props:['icon','iconPosition']
     }
 </script>
 
