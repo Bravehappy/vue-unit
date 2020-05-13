@@ -2,21 +2,15 @@
  * @Author: Mr.zeng 
  * @Date: 2020-05-13 01:59:25 
  * @Last Modified by: Mr.zeng
- * @Last Modified time: 2020-05-14 01:10:54
+ * @Last Modified time: 2020-05-14 02:05:35
  */
 
 <template>
-    <button class="u-button">
-        <div v-if="iconPosition === 'right'">
-            <slot></slot>
-            <svg v-if="icon" class="icon">
-                <use :xlink:href="`#${icon}`"></use>
-            </svg>
-        </div>
-        <div v-else>
-            <svg v-if="icon" class="icon">
-                <use :xlink:href="`#${icon}`"></use>
-            </svg>
+    <button class="u-button" :class="{[`icon-${iconPosition}`]: true}">
+        <svg v-if="icon" class="icon">
+            <use :xlink:href="`#${icon}`"></use>
+        </svg>
+        <div class="content">
             <slot></slot>
         </div>
     </button>
@@ -24,7 +18,17 @@
 
 <script>
     export default {
-        props:['icon','iconPosition']
+        // props:['icon','iconPosition']
+        props:{
+            icon: {},
+            iconPosition: {
+                type: String,
+                default: 'left',
+                validator (value) {
+                    return  value === 'left' || value === 'right'
+                }
+            }
+        }
     }
 </script>
 
@@ -38,5 +42,11 @@
         &:hover { border-color: #666; }
         &:active { background-color: #eee; }
         &:focus { outline: none; }
+        > .icon{order: 1;margin-right: .3em;}
+        > .content{order: 2;}
+        &.icon-right{
+            > .icon{order: 2; margin-right: 0;margin-left: 0.3em;}
+            > .content{order: 1;}
+        }
     }
 </style>
