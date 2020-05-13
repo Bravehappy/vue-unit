@@ -2,14 +2,15 @@
  * @Author: Mr.zeng 
  * @Date: 2020-05-13 01:59:25 
  * @Last Modified by: Mr.zeng
- * @Last Modified time: 2020-05-14 02:05:35
+ * @Last Modified time: 2020-05-14 02:41:50
  */
 
 <template>
     <button class="u-button" :class="{[`icon-${iconPosition}`]: true}">
-        <svg v-if="icon" class="icon">
+        <!-- <svg v-if="icon" class="icon">
             <use :xlink:href="`#${icon}`"></use>
-        </svg>
+        </svg> -->
+        <u-icon class="icon" v-show="icon" :icon="icon" :class="`${icon}`"></u-icon>
         <div class="content">
             <slot></slot>
         </div>
@@ -33,6 +34,14 @@
 </script>
 
 <style lang="scss" scoped>
+    @keyframes spin {
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
     .u-button { 
         font-size: 14px; height: 32px; padding: 0 1em;
         border-radius: 6pxs; border: 1px solid #ccc;
@@ -47,6 +56,9 @@
         &.icon-right{
             > .icon{order: 2; margin-right: 0;margin-left: 0.3em;}
             > .content{order: 1;}
+        }
+        .u-loading{
+            animation: spin 1s infinite linear;
         }
     }
 </style>
