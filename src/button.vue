@@ -2,15 +2,12 @@
  * @Author: Mr.zeng 
  * @Date: 2020-05-13 01:59:25 
  * @Last Modified by: Mr.zeng
- * @Last Modified time: 2020-05-14 02:41:50
+ * @Last Modified time: 2020-05-17 01:18:41
  */
 
 <template>
-    <button class="u-button" :class="{[`icon-${iconPosition}`]: true}">
-        <!-- <svg v-if="icon" class="icon">
-            <use :xlink:href="`#${icon}`"></use>
-        </svg> -->
-        <u-icon class="icon" v-show="icon" :icon="icon" :class="`${icon}`"></u-icon>
+    <button class="u-button" :class="{[`icon-${iconPosition}`]: true}" @click="click">
+        <u-icon class="icon"  v-show="icon && !loading" :icon="icon" :class="`${icon}`"></u-icon>
         <div class="content">
             <slot></slot>
         </div>
@@ -19,15 +16,25 @@
 
 <script>
     export default {
-        // props:['icon','iconPosition']
         props:{
             icon: {},
+            loading: {
+                type: Boolean,
+                default: false
+            },
             iconPosition: {
                 type: String,
                 default: 'left',
                 validator (value) {
                     return  value === 'left' || value === 'right'
                 }
+            }
+        },
+        mounted () {
+        },
+        methods: {
+            click () {
+                this.$emit("click")
             }
         }
     }

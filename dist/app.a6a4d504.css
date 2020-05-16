@@ -1,0 +1,51 @@
+@keyframes spin-data-v-56997c {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+.u-button[data-v-56997c] {
+  font-size: 14px;
+  height: 32px;
+  padding: 0 1em;
+  border-radius: 6pxs;
+  border: 1px solid #ccc;
+  background: #fff;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+.u-button[data-v-56997c]:hover {
+  border-color: #666;
+}
+.u-button[data-v-56997c]:active {
+  background-color: #eee;
+}
+.u-button[data-v-56997c]:focus {
+  outline: none;
+}
+.u-button > .icon[data-v-56997c] {
+  order: 1;
+  margin-right: 0.3em;
+}
+.u-button > .content[data-v-56997c] {
+  order: 2;
+}
+.u-button.icon-right > .icon[data-v-56997c] {
+  order: 2;
+  margin-right: 0;
+  margin-left: 0.3em;
+}
+.u-button.icon-right > .content[data-v-56997c] {
+  order: 1;
+}
+.u-button .u-loading[data-v-56997c] {
+  animation: spin-data-v-56997c 1s infinite linear;
+}
+.u-icon {
+  width: 1em;
+  height: 1em;
+}
